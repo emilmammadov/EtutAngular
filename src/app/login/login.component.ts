@@ -18,7 +18,11 @@ export class LoginComponent implements OnInit {
   }
 
   loginClick(i: number) {
-    this.httpService.getAllAdmins().subscribe(data => {
+    let url;
+    if (i === 0) url = 'admin/login';
+    else if (i === 1) url = 'teacher/login';
+    else url = 'student/login';
+    this.httpService.login(this.username, this.password, url).subscribe(data => {
       console.log(data);
     });
   }
