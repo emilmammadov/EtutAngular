@@ -4,104 +4,39 @@
       <div class="card-deck h-100">
         <div class="card bg-white text-white">
           <div class="card-body">
-            <div class="mb-4">
-              <div id="accordion">
-                <div class="card mb-1">
-                  <div class="card-header" id="headingOne">
-                    <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Öğrenci Girişi
-                    </button>
-                  </div>
-
-                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-                    <div class="card-body border border-dark mx-auto">
-
-                      <form>
-                        <div class="form-group text-secondary mx-auto">
-                          <label for="nameStudent">Kullanıcı Adı:</label>
-                          <input
-                            type="text"
-                            id="nameStudent"
-                            class="form-control w-75"
-                            placeholder=""
-                          />
-                        </div>
-                        <div class="form-group text-secondary">
-                          <label for="passwordStudent">Şifre:</label>
-                          <input
-                            type="password"
-                            id="passwordStudent"
-                            class="form-control w-75"
-                            placeholder=""
-                          />
-                        </div>
-                        <button class="px-5 btn btn-secondary btn-sm" type="button">Giriş</button>
-                      </form>
-                    </div>
-                  </div>
+            <div id="accordion">
+              <div *ngFor="let header of headers; let i=index" class="card mb-1">
+                <div class="card-header" id="headingOne">
+                  <button class="btn btn-link text-dark" data-toggle="collapse" [attr.data-target]="'#col'+i" [attr.aria-controls]="'col'+i">
+                    {{header}}
+                  </button>
                 </div>
-                <div class="card mb-1">
-                  <div class="card-header" id="headingTwo">
-                    <button class="btn btn-link collapsed text-dark" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Öğretmen Girişi
-                    </button>
-                  </div>
-                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                    <div class="card-body border border-dark">
-                      <form>
-                        <div class="form-group text-secondary">
-                          <label for="nameTeacher">Kullanıcı Adı:</label>
-                          <input
-                            type="text"
-                            id="nameTeacher"
-                            class="form-control w-75"
-                            placeholder=""
-                          />
-                        </div>
-                        <div class="form-group text-secondary">
-                          <label for="passwordTeacher">Şifre:</label>
-                          <input
-                            type="password"
-                            id="passwordTeacher"
-                            class="form-control w-75"
-                            placeholder=""
-                          />
-                        </div>
-                        <button class="px-5 btn btn-secondary btn-sm" type="button">Giriş</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="card mb-1">
-                  <div class="card-header" id="headingThree">
-                    <button class="btn btn-link collapsed text-dark" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Admin Girişi
-                    </button>
-                  </div>
-                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                    <div class="card-body border border-dark">
-                      <form>
-                        <div class="form-group text-secondary">
-                          <label for="nameAdmin">Kullanıcı Adı:</label>
-                          <input
-                            type="text"
-                            id="nameAdmin"
-                            class="form-control w-75"
-                            placeholder=""
-                          />
-                        </div>
-                        <div class="form-group text-secondary">
-                          <label for="passwordAdmin">Password:</label>
-                          <input
-                            type="password"
-                            id="passwordAdmin"
-                            class="form-control w-75"
-                            placeholder=""
-                          />
-                        </div>
-                        <button class="px-5 btn btn-secondary btn-sm" type="button">Giriş</button>
-                      </form>
-                    </div>
+
+                <div id="col{{i}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                  <div class="card-body border border-dark mx-auto">
+
+                    <form>
+                      <div class="form-group text-secondary mx-auto">
+                        <label>Kullanıcı Adı:</label>
+                        <input
+                          type="text"
+                          class="form-control w-75"
+                          name="username"
+                          [(ngModel)]="username"
+                        />
+                      </div>
+                      <div class="form-group text-secondary">
+                        <label>Şifre:</label>
+                        <input
+                          type="password"
+                          class="form-control w-75"
+                          name="password"
+                          [(ngModel)]="password"
+                        />
+                      </div>
+                      <button (click)="loginClick(i)"
+                        class="px-5 btn btn-secondary btn-sm" type="button">Giriş</button>
+                    </form>
                   </div>
                 </div>
               </div>
