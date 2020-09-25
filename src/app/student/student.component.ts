@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {StorageService} from '../services/storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-student',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StudentComponent implements OnInit {
 
-  constructor() { }
+  constructor(storageService: StorageService, router: Router) {
+    let user = storageService.getLocalUser();
+    if (!user || user.role !== 'student') {
+      router.navigateByUrl('/login');
+    }
+  }
 
   ngOnInit() {
   }

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../services/http.service';
+import {StorageService} from '../services/storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,19 +13,22 @@ export class LoginComponent implements OnInit {
   username;
   password;
   headers = ["Admin", "Öğretmen", "Öğrenci"];
+  roles = ['admin', 'teacher', 'student'];
 
-  constructor(private httpService: HttpService) { }
+  constructor(private httpService: HttpService,
+              private storageService: StorageService,
+              private router: Router) { }
 
   ngOnInit() {
   }
 
   loginClick(i: number) {
-    let url;
-    if (i === 0) url = 'admin/login';
-    else if (i === 1) url = 'teacher/login';
-    else url = 'student/login';
+    let url = `${this.roles[i]}/login`;
     this.httpService.login(this.username, this.password, url).subscribe(data => {
-      console.log(data);
+      if (data) {
+        this.storageService.setLocalUser(data, this.roles[i]);
+        this.router.navigateByUrl('/'+this.roles[i]);
+      }
     });
   }
 }
