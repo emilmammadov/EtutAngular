@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StorageService} from '../services/storage.service';
 import {Router} from '@angular/router';
+import {HttpService} from '../services/http.service';
 
 @Component({
   selector: 'app-admin',
@@ -9,10 +10,23 @@ import {Router} from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  student;
-  teacher;
+  student = {
+    adi: '',
+    soyadi: '',
+    username: '',
+    password: ''
+  };
+  teacher = {
+    adi: '',
+    soyadi: '',
+    username: '',
+    password: '',
+    dersId: 3
+  };
 
-  constructor(private storageService: StorageService, private router: Router) {
+  constructor(private storageService: StorageService,
+              private router: Router,
+              private httpService: HttpService) {
     let user = storageService.getLocalUser();
     if (!user || user.role !== 'admin') {
       router.navigateByUrl('/login');
@@ -28,10 +42,14 @@ export class AdminComponent implements OnInit {
   }
 
   addStudent() {
-
+    this.httpService.addStudent(this.student).subscribe(data => {
+      console.log("data", data);
+    });
   }
 
   addTeacher() {
-
+    this.httpService.addTeacher(this.teacher).subscribe(data => {
+      console.log("data", data);
+    });
   }
 }
