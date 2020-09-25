@@ -1,1 +1,46 @@
 <button (click)="logout()" class="btn btn-dark logout">Çıkış Yap</button>
+
+
+<div class="w-50 card mx-auto my-4 h-75">
+  <div class="accordion" id="accordion">
+
+
+    <div class="card mb-1">
+      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col1">Öğretmen Ekle</button>
+      <div id="col1" class="collapse" data-parent="#accordion">
+        <form class="ml-4">
+          <input type="text" class="form-control w-50 my-2" name="name" [(ngModel)]="teacher.name" placeholder="İsim"/>
+          <input type="text" class="form-control w-50 mb-2" name="surname" [(ngModel)]="teacher.surname" placeholder="Soyisim"/>
+          <input type="text" class="form-control w-50 mb-2" name="username" [(ngModel)]="teacher.username" placeholder="Kullanıcı Adı"/>
+          <input type="password" class="form-control w-50 mb-2" name="password" [(ngModel)]="teacher.password" placeholder="Şifre"/>
+          <button (click)="addTeacher()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Kaydet</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card ">
+      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col2">Öğrenci Ekle</button>
+      <div id="col2" class="collapse" data-parent="#accordion">
+        <form class="ml-4">
+          <input type="text" class="form-control w-50 my-2" name="name" [(ngModel)]="student.name" placeholder="İsim"/>
+          <input type="text" class="form-control w-50 mb-2" name="surname" [(ngModel)]="student.surname" placeholder="Soyisim"/>
+          <input type="text" class="form-control w-50 mb-2" name="username" [(ngModel)]="student.username" placeholder="Kullanıcı Adı"/>
+          <input type="password" class="form-control w-50 mb-2" name="password" [(ngModel)]="student.password" placeholder="Şifre"/>
+          <button (click)="addStudent()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Kaydet</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="card mb-1">
+      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col3">Ders Ekle</button>
+      <div id="col3" class="collapse" data-parent="#accordion">
+        <form class="ml-4">
+          <input type="text" class="form-control w-50 my-2" name="username" placeholder="Ders Adı"/>
+          <button class="px-5 btn btn-secondary btn-sm mb-2" type="button">Kaydet</button>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>

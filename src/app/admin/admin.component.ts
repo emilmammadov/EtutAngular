@@ -9,6 +9,9 @@ import {Router} from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
+  student;
+  teacher;
+
   constructor(private storageService: StorageService, private router: Router) {
     let user = storageService.getLocalUser();
     if (!user || user.role !== 'admin') {
@@ -24,4 +27,11 @@ export class AdminComponent implements OnInit {
     this.router.navigateByUrl('/login');
   }
 
+  addStudent() {
+
+  }
+
+  addTeacher() {
+
+  }
 }
