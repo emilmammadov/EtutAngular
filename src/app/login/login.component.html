@@ -4,15 +4,15 @@
       <div class="card-deck h-100">
         <div class="card bg-white text-white">
           <div class="card-body">
-            <div id="accordion">
+            <div class="accordion" id="accordion">
               <div *ngFor="let header of headers; let i=index" class="card mb-1">
-                <div class="card-header" id="headingOne">
-                  <button class="btn btn-link text-dark" data-toggle="collapse" [attr.data-target]="'#col'+i" [attr.aria-controls]="'col'+i">
+                <div class="card-header" id="heading{{i}}">
+                  <button class="btn btn-link text-dark" data-toggle="collapse" [attr.data-target]="'#col'+i">
                     {{header}}
                   </button>
                 </div>
 
-                <div id="col{{i}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="col{{i}}" class="collapse" [attr.aria-labelledby]="'heading'+i" data-parent="#accordion">
                   <div class="card-body border border-dark mx-auto">
 
                     <form>
