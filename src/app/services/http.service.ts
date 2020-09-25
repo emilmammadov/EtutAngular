@@ -21,6 +21,11 @@ export class HttpService {
     let url = 'admin/ogrenciekle';
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, student);
   }
+
+  getAllLectures() {
+    let url = 'ders/all';
+    return this.http.get(`${HttpClientHelper.baseURL}${url}`);
+  }
 }
 
 export class HttpClientHelper{

@@ -13,6 +13,10 @@
           <input type="text" class="form-control w-50 mb-2" name="surname" [(ngModel)]="teacher.soyadi" placeholder="Soyisim"/>
           <input type="text" class="form-control w-50 mb-2" name="username" [(ngModel)]="teacher.username" placeholder="Kullanıcı Adı"/>
           <input type="password" class="form-control w-50 mb-2" name="password" [(ngModel)]="teacher.password" placeholder="Şifre"/>
+          <select class="form-control w-50 mb-2" name="lecture" [(ngModel)]="selectedLecture" required>
+            <option value="" selected="selected">Ders Seçiniz</option>
+            <option *ngFor="let ders of dersler">{{ders.dersAdi}}</option>
+          </select>
           <button (click)="addTeacher()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Kaydet</button>
         </form>
       </div>

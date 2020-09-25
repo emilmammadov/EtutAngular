@@ -21,12 +21,18 @@ export class AdminComponent implements OnInit {
     soyadi: '',
     username: '',
     password: '',
-    dersId: 3
+    dersId: 1
   };
+
+  dersler;
+  selectedLecture;
 
   constructor(private storageService: StorageService,
               private router: Router,
               private httpService: HttpService) {
+    httpService.getAllLectures().subscribe(data => {
+      this.dersler = data;
+    });
     let user = storageService.getLocalUser();
     if (!user || user.role !== 'admin') {
       router.navigateByUrl('/login');
@@ -48,6 +54,7 @@ export class AdminComponent implements OnInit {
   }
 
   addTeacher() {
+    this.teacher.dersId = this.dersler.find(elem => elem.dersAdi === this.selectedLecture).id;
     this.httpService.addTeacher(this.teacher).subscribe(data => {
       console.log("data", data);
     });
