@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class StudentComponent implements OnInit {
 
-  constructor(storageService: StorageService, router: Router) {
+  constructor(private storageService: StorageService, private router: Router) {
     let user = storageService.getLocalUser();
     if (!user || user.role !== 'student') {
       router.navigateByUrl('/login');
@@ -19,4 +19,8 @@ export class StudentComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout() {
+    this.storageService.removeLocalUser();
+    this.router.navigateByUrl('/login');
+  }
 }

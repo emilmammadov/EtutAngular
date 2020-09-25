@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  constructor(storageService: StorageService, router: Router) {
+  constructor(private storageService: StorageService, private router: Router) {
     let user = storageService.getLocalUser();
     if (!user || user.role !== 'admin') {
       router.navigateByUrl('/login');
@@ -17,6 +17,11 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.storageService.removeLocalUser();
+    this.router.navigateByUrl('/login');
   }
 
 }
