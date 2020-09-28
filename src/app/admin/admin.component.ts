@@ -26,6 +26,7 @@ export class AdminComponent implements OnInit {
 
   dersler;
   selectedLecture;
+  lectureName;
 
   constructor(private storageService: StorageService,
               private router: Router,
@@ -50,13 +51,31 @@ export class AdminComponent implements OnInit {
   addStudent() {
     this.httpService.addStudent(this.student).subscribe(data => {
       console.log("data", data);
+      this.student = {
+        adi: '',
+        soyadi: '',
+        username: '',
+        password: ''
+      };
     });
   }
 
   addTeacher() {
     this.teacher.dersId = this.dersler.find(elem => elem.dersAdi === this.selectedLecture).id;
     this.httpService.addTeacher(this.teacher).subscribe(data => {
-      console.log("data", data);
+      this.teacher = {
+        adi: '',
+        soyadi: '',
+        username: '',
+        password: '',
+        dersId: 1
+      };
     });
+  }
+
+  addLecture() {
+    this.httpService.addLecture(this.lectureName).subscribe(data => {
+      this.lectureName = '';
+    })
   }
 }
