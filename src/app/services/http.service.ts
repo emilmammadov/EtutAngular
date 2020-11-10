@@ -12,6 +12,11 @@ export class HttpService {
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, {username, password});
   }
 
+  getAllTeachers() {
+    let url = 'teacher/all';
+    return this.http.get(`${HttpClientHelper.baseURL}${url}`);
+  }
+
   addTeacher(teacher) {
     let url = 'admin/ogretmenekle';
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, teacher);

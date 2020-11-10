@@ -9,6 +9,13 @@ import { StudentComponent } from './student/student.component';
 import { TeacherComponent } from './teacher/teacher.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatInputModule} from "@angular/material/input";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {NgxMaterialTimepickerModule} from "ngx-material-timepicker";
+import {MatNativeDateModule} from '@angular/material';
+// import { MatMomentDateModule } from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
@@ -22,7 +29,14 @@ import {HttpClientModule} from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatInputModule,
+    BrowserAnimationsModule,
+    NgxMaterialTimepickerModule,
+    MatNativeDateModule,
+    // MatMomentDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
