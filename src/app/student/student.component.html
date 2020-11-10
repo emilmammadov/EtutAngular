@@ -1,1 +1,20 @@
 <button (click)="logout()" class="btn btn-dark logout">Çıkış Yap</button>
+<select class="form-control w-50 mb-2" name="lecture" [(ngModel)]="selectedTeacher" required>
+  <option value="" selected="selected">Öğretmen Seçiniz</option>
+  <option *ngFor="let teacher of teachers">
+    {{'Öğretmeng add @angular/materialn: ' + teacher.adi + ' ' + teacher.soyadi + ' Ders: ' + teacher.dersAdi}}
+  </option>
+</select>
+
+<mat-form-field appearance="outline" class="mr-3">
+  <mat-label>Başlama tarihi</mat-label>
+  <input [(ngModel)]="randevu.date" [ngModelOptions]="{standalone: true}" matInput [matDatepicker]="picker1" required readonly>
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1 color="primary"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field appearance="outline" class="timePriceContainer">
+  <mat-label>Saat</mat-label>
+  <input [(ngModel)]="randevu.startTime" [ngModelOptions]="{standalone: true}" matInput [ngxTimepicker]="toggleTimepicker1" [format]="24" required readonly>
+  <ngx-material-timepicker #toggleTimepicker1></ngx-material-timepicker>
+</mat-form-field>

@@ -31,6 +31,11 @@ export class HttpService {
     let url = 'ders/add';
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, {dersAdi: name});
   }
+
+  getAllTeachers() {
+    let url = 'teacher/all';
+    return this.http.get(`${HttpClientHelper.baseURL}${url}`);
+  }
 }
 
 export class HttpClientHelper{
