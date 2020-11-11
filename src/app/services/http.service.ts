@@ -36,6 +36,15 @@ export class HttpService {
     let url = 'ders/add';
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, {dersAdi: name});
   }
+
+  addProgram(program) {
+    let url = 'program/add';
+    return this.http.post(`${HttpClientHelper.baseURL}${url}`, program);
+  }
+
+  getApprovedApts(studentId) {
+
+  }
 }
 
 export class HttpClientHelper{

@@ -11,15 +11,14 @@ import {HttpService} from "../services/http.service";
 export class StudentComponent implements OnInit {
 
   teachers;
+  student;
   lectures;
-  selectedTeacher;
-  randevu = {};
+  selectedTeacherId;
+  randevu: any = {startTime: '16:00', endTime: '17:30', date: new Date()};
 
   constructor(private storageService: StorageService, private router: Router, private httpService: HttpService) {
-    let user = storageService.getLocalUser();
-    if (!user || user.role !== 'student') {
-      router.navigateByUrl('/login');
-    }
+    this.student = storageService.getLocalUser();
+    if (!this.student || this.student.role !== 'student') router.navigateByUrl('/login');
 
     httpService.getAllTeachers().subscribe(tchrs => {
       this.teachers = tchrs;
@@ -28,7 +27,6 @@ export class StudentComponent implements OnInit {
         this.teachers.forEach(tchr => {
           tchr.dersAdi = this.lectures.find(elem => elem.id === tchr.dersId).dersAdi
         });
-        console.log("teachers", this.teachers);
       });
     });
   }
@@ -39,5 +37,28 @@ export class StudentComponent implements OnInit {
   logout() {
     this.storageService.removeLocalUser();
     this.router.navigateByUrl('/login');
+  }
+
+  btnAddClick() {
+    if (this.randevu.startTime < '16:00' && this.randevu.endTime > '17:30') {
+      alert('Etüt saati 16:00 ile 17:30 arasında olmalıdır');
+      return;
+    }
+
+    let startTime = this.randevu.startTime.split(':');
+    let endTime = this.randevu.endTime.split(':');
+
+    let program = {
+      ogretmenId: this.selectedTeacherId,
+      ogrenciId: this.student.ogrenciId,
+      randevuStart: new Date().setHours(startTime[0], startTime[1]),
+      randevuEnd: new Date().setHours(endTime[0], endTime[1]),
+      status: 0
+    };
+    this.httpService.addProgram(program).subscribe(data => {
+      if (!data) alert('Bu saat aralığı müsait değil');
+      else alert('Randevu talebiniz alınmıştır');
+    });
+
   }
 }
