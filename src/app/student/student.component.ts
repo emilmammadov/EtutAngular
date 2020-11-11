@@ -15,6 +15,7 @@ export class StudentComponent implements OnInit {
   lectures;
   selectedTeacherId;
   randevu: any = {startTime: '16:00', endTime: '17:30', date: new Date()};
+  approvedPrograms :any = [];
 
   constructor(private storageService: StorageService, private router: Router, private httpService: HttpService) {
     this.student = storageService.getLocalUser();
@@ -22,6 +23,7 @@ export class StudentComponent implements OnInit {
 
     httpService.getAllTeachers().subscribe(tchrs => {
       this.teachers = tchrs;
+      httpService.getApprovedApts(this.student.ogrenciId).subscribe(data=>this.approvedPrograms = data);
       httpService.getAllLectures().subscribe(lctrs => {
         this.lectures = lctrs;
         this.teachers.forEach(tchr => {
@@ -60,5 +62,14 @@ export class StudentComponent implements OnInit {
       else alert('Randevu talebiniz alınmıştır');
     });
 
+  }
+
+  getTeacherStringFromId(id) {
+    let tchr = this.teachers.find(elem => elem.id === id);
+    return 'Öğretmen Adı Soyadı: ' + tchr.adi + ' ' + tchr.soyadi;
+  }
+
+  toDateString(date) {
+    return new Date(date).toLocaleDateString() + ' ' + new Date(date).toLocaleTimeString();
   }
 }

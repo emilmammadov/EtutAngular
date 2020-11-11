@@ -42,8 +42,9 @@ export class HttpService {
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, program);
   }
 
-  getApprovedApts(studentId) {
-
+  getApprovedApts(ogrenciId) {
+    let url = 'program/student-approved';
+    return this.http.post(`${HttpClientHelper.baseURL}${url}`, ogrenciId);
   }
 }
 
