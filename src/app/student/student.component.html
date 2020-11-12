@@ -34,7 +34,7 @@
 
     <div class="mt-5 d-flex flex-column align-items-center" *ngIf="approvedPrograms.length > 0">
       <span class="mb-3">Onaylanan Istekler</span>
-      <div class="bg-dark d-flex flex-column p-3 rounded-lg" style="color: white" *ngFor="let program of approvedPrograms">
+      <div class="bg-dark d-flex flex-column py-3 px-5 rounded-lg mb-3" style="color: white" *ngFor="let program of approvedPrograms">
         <span>{{getTeacherStringFromId(program.ogretmenId)}}</span>
         <span>Başlangıç: {{toDateString(program.randevuStart)}}</span>
         <span>Bitiş: {{toDateString(program.randevuEnd)}}</span>

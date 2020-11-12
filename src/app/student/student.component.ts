@@ -45,6 +45,9 @@ export class StudentComponent implements OnInit {
     if (this.randevu.startTime < '16:00' && this.randevu.endTime > '17:30') {
       alert('Etüt saati 16:00 ile 17:30 arasında olmalıdır');
       return;
+    } else if (this.randevu.startTime > this.randevu.endTime) {
+      alert('Başlama saati bitiş saatinden sonra olamaz');
+      return;
     }
 
     let startTime = this.randevu.startTime.split(':');
@@ -53,8 +56,8 @@ export class StudentComponent implements OnInit {
     let program = {
       ogretmenId: this.selectedTeacherId,
       ogrenciId: this.student.ogrenciId,
-      randevuStart: new Date().setHours(startTime[0], startTime[1]),
-      randevuEnd: new Date().setHours(endTime[0], endTime[1]),
+      randevuStart: new Date(this.randevu.date).setHours(startTime[0], startTime[1]),
+      randevuEnd: new Date(this.randevu.date).setHours(endTime[0], endTime[1]),
       status: 0
     };
     this.httpService.addProgram(program).subscribe(data => {
