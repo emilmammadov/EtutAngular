@@ -27,6 +27,11 @@ export class HttpService {
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, student);
   }
 
+  getAllStudents() {
+    let url = 'student/all';
+    return this.http.get(`${HttpClientHelper.baseURL}${url}`);
+  }
+
   getAllLectures() {
     let url = 'ders/all';
     return this.http.get(`${HttpClientHelper.baseURL}${url}`);
@@ -42,9 +47,29 @@ export class HttpService {
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, program);
   }
 
-  getApprovedApts(ogrenciId) {
+  getStudentApprovedApts(ogrenciId) {
     let url = 'program/student-approved';
     return this.http.post(`${HttpClientHelper.baseURL}${url}`, ogrenciId);
+  }
+
+  getTeacherApprovedApts(teacherId) {
+    let url = 'program/teacher-approved';
+    return this.http.post(`${HttpClientHelper.baseURL}${url}`, teacherId);
+  }
+
+  getTeacherWaitApts(teacherId) {
+    let url = 'program/teacher-wait';
+    return this.http.post(`${HttpClientHelper.baseURL}${url}`, teacherId);
+  }
+
+  removeProgram(id) {
+    let url = 'program/delete';
+    return this.http.post(`${HttpClientHelper.baseURL}${url}`, id);
+  }
+
+  approveProgram(id) {
+    let url = 'program/approve';
+    return this.http.post(`${HttpClientHelper.baseURL}${url}`, id);
   }
 }
 

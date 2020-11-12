@@ -23,7 +23,7 @@ export class StudentComponent implements OnInit {
 
     httpService.getAllTeachers().subscribe(tchrs => {
       this.teachers = tchrs;
-      httpService.getApprovedApts(this.student.ogrenciId).subscribe(data=>this.approvedPrograms = data);
+      httpService.getStudentApprovedApts(this.student.ogrenciId).subscribe(data=>this.approvedPrograms = data);
       httpService.getAllLectures().subscribe(lctrs => {
         this.lectures = lctrs;
         this.teachers.forEach(tchr => {
