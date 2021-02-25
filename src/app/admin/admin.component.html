@@ -1,4 +1,4 @@
-<button (click)="logout()" class="btn btn-dark logout">Çıkış Yap</button>
+<button (click)="logout()" class="btn btn-dark logout">Sign Off</button>
 
 
 <div class="w-50 card mx-auto my-4 h-75">
@@ -6,41 +6,41 @@
 
 
     <div class="card mb-1">
-      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col1">Öğretmen Ekle</button>
+      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col1">Add A Teacher</button>
       <div id="col1" class="collapse" data-parent="#accordion">
         <form class="ml-4">
-          <input type="text" class="form-control w-50 my-2" name="name" [(ngModel)]="teacher.adi" placeholder="İsim"/>
-          <input type="text" class="form-control w-50 mb-2" name="surname" [(ngModel)]="teacher.soyadi" placeholder="Soyisim"/>
-          <input type="text" class="form-control w-50 mb-2" name="username" [(ngModel)]="teacher.username" placeholder="Kullanıcı Adı"/>
-          <input type="password" class="form-control w-50 mb-2" name="password" [(ngModel)]="teacher.password" placeholder="Şifre"/>
+          <input type="text" class="form-control w-50 my-2" name="name" [(ngModel)]="teacher.adi" placeholder="Name"/>
+          <input type="text" class="form-control w-50 mb-2" name="surname" [(ngModel)]="teacher.soyadi" placeholder="Surname"/>
+          <input type="text" class="form-control w-50 mb-2" name="username" [(ngModel)]="teacher.username" placeholder="Username"/>
+          <input type="password" class="form-control w-50 mb-2" name="password" [(ngModel)]="teacher.password" placeholder="Password"/>
           <select class="form-control w-50 mb-2" name="lecture" [(ngModel)]="selectedLecture" required>
-            <option value="" selected="selected">Ders Seçiniz</option>
+            <option value="" selected="selected">Choose Lecture</option>
             <option *ngFor="let ders of dersler">{{ders.dersAdi}}</option>
           </select>
-          <button (click)="addTeacher()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Kaydet</button>
+          <button (click)="addTeacher()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Save</button>
         </form>
       </div>
     </div>
 
     <div class="card ">
-      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col2">Öğrenci Ekle</button>
+      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col2">Add A Student</button>
       <div id="col2" class="collapse" data-parent="#accordion">
         <form class="ml-4">
-          <input type="text" class="form-control w-50 my-2" name="name" [(ngModel)]="student.adi" placeholder="İsim"/>
-          <input type="text" class="form-control w-50 mb-2" name="surname" [(ngModel)]="student.soyadi" placeholder="Soyisim"/>
-          <input type="text" class="form-control w-50 mb-2" name="username" [(ngModel)]="student.username" placeholder="Kullanıcı Adı"/>
-          <input type="password" class="form-control w-50 mb-2" name="password" [(ngModel)]="student.password" placeholder="Şifre"/>
-          <button (click)="addStudent()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Kaydet</button>
+          <input type="text" class="form-control w-50 my-2" name="name" [(ngModel)]="student.adi" placeholder="Name"/>
+          <input type="text" class="form-control w-50 mb-2" name="surname" [(ngModel)]="student.soyadi" placeholder="Surname"/>
+          <input type="text" class="form-control w-50 mb-2" name="username" [(ngModel)]="student.username" placeholder="Username"/>
+          <input type="password" class="form-control w-50 mb-2" name="password" [(ngModel)]="student.password" placeholder="Password"/>
+          <button (click)="addStudent()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Save</button>
         </form>
       </div>
     </div>
 
     <div class="card mb-1">
-      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col3">Ders Ekle</button>
+      <button class="btn btn-link text-dark" data-toggle="collapse" data-target="#col3">Add A Lecture</button>
       <div id="col3" class="collapse" data-parent="#accordion">
         <form class="ml-4">
-          <input type="text" class="form-control w-50 my-2" name="username" [(ngModel)]="lectureName" placeholder="Ders Adı"/>
-          <button (click)="addLecture()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Kaydet</button>
+          <input type="text" class="form-control w-50 my-2" name="username" [(ngModel)]="lectureName" placeholder="Lecture Name"/>
+          <button (click)="addLecture()" class="px-5 btn btn-secondary btn-sm mb-2" type="button">Save</button>
         </form>
       </div>
     </div>

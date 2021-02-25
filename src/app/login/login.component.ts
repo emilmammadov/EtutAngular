@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   username;
   password;
-  headers = ["Admin", "Öğretmen", "Öğrenci"];
+  headers = ["Admin", "Teacher", "Student"];
   roles = ['admin', 'teacher', 'student'];
 
   constructor(private httpService: HttpService,
