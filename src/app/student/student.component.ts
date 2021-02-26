@@ -43,10 +43,10 @@ export class StudentComponent implements OnInit {
 
   btnAddClick() {
     if (this.randevu.startTime < '16:00' && this.randevu.endTime > '17:30') {
-      alert('Etüt saati 16:00 ile 17:30 arasında olmalıdır');
+      alert('Study time must be between 16:00 and 17:30');
       return;
     } else if (this.randevu.startTime > this.randevu.endTime) {
-      alert('Başlama saati bitiş saatinden sonra olamaz');
+      alert('Start time cannot be after end time');
       return;
     }
 
@@ -61,15 +61,15 @@ export class StudentComponent implements OnInit {
       status: 0
     };
     this.httpService.addProgram(program).subscribe(data => {
-      if (!data) alert('Bu saat aralığı müsait değil');
-      else alert('Randevu talebiniz alınmıştır');
+      if (!data) alert('This time range is unavailable');
+      else alert('Your appointment request has been received');
     });
 
   }
 
   getTeacherStringFromId(id) {
     let tchr = this.teachers.find(elem => elem.id === id);
-    return 'Öğretmen Adı Soyadı: ' + tchr.adi + ' ' + tchr.soyadi;
+    return 'Teacher\'s Full Name ' + tchr.soyadi;
   }
 
   toDateString(date) {

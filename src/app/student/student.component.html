@@ -1,43 +1,43 @@
 <div class="d-flex justify-content-end m-4">
-  <button (click)="logout()" class="btn btn-dark">Çıkış Yap</button>
+  <button (click)="logout()" class="btn btn-dark">Sign out</button>
 </div>
 <div class="d-flex justify-content-center">
   <div class="d-flex flex-column w-50 mt-5 mx-3">
     <select class="form-control mb-2" [(ngModel)]="selectedTeacherId" required>
       <option *ngFor="let teacher of teachers" value="{{teacher.id}}">
-        {{'Öğretmen: ' + teacher.adi + ' ' + teacher.soyadi + ' Ders: ' + teacher.dersAdi}}
+        {{'Teacher: ' + teacher.adi + ' ' + teacher.soyadi + ' Lecture: ' + teacher.dersAdi}}
       </option>
     </select>
 
     <div class="d-flex flex-row">
       <mat-form-field appearance="outline" class="mr-3">
-        <mat-label>Tarih</mat-label>
+        <mat-label>Date</mat-label>
         <input [(ngModel)]="randevu.date" [ngModelOptions]="{standalone: true}" matInput [matDatepicker]="picker1" required readonly>
         <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
         <mat-datepicker #picker1 color="primary"></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="timePriceContainer mr-3">
-        <mat-label>Başlama Saati</mat-label>
+        <mat-label>Start Time</mat-label>
         <input [(ngModel)]="randevu.startTime" [ngModelOptions]="{standalone: true}" matInput [ngxTimepicker]="toggleTimepicker1" [format]="24" required readonly>
         <ngx-material-timepicker #toggleTimepicker1></ngx-material-timepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="timePriceContainer">
-        <mat-label>Bitiş Saati</mat-label>
+        <mat-label>End Time</mat-label>
         <input [(ngModel)]="randevu.endTime" [ngModelOptions]="{standalone: true}" matInput [ngxTimepicker]="toggleTimepicker2" [format]="24" required readonly>
         <ngx-material-timepicker #toggleTimepicker2></ngx-material-timepicker>
       </mat-form-field>
     </div>
 
-    <button (click)="btnAddClick()" class="btn btn-success">Gönder</button>
+    <button (click)="btnAddClick()" class="btn btn-success">Send</button>
 
     <div class="mt-5 d-flex flex-column align-items-center" *ngIf="approvedPrograms.length > 0">
-      <span class="mb-3">Onaylanan Istekler</span>
+      <span class="mb-3">Approved requests</span>
       <div class="bg-dark d-flex flex-column py-3 px-5 rounded-lg mb-3" style="color: white" *ngFor="let program of approvedPrograms">
         <span>{{getTeacherStringFromId(program.ogretmenId)}}</span>
-        <span>Başlangıç: {{toDateString(program.randevuStart)}}</span>
-        <span>Bitiş: {{toDateString(program.randevuEnd)}}</span>
+        <span>Start: {{toDateString(program.randevuStart)}}</span>
+        <span>End: {{toDateString(program.randevuEnd)}}</span>
       </div>
     </div>
   </div>

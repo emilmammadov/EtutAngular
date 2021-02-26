@@ -1,24 +1,24 @@
 <div class="d-flex justify-content-end m-4">
-  <button (click)="logout()" class="btn btn-dark">Çıkış Yap</button>
+  <button (click)="logout()" class="btn btn-dark">Sign out</button>
 </div>
 <div class="mt-5 d-flex flex-column align-items-center" *ngIf="waitApts?.length > 0">
-  <span class="mb-3">Onay Bekleyen Istekler</span>
+  <span class="mb-3">Waiting for Approval</span>
   <div class="bg-dark d-flex flex-column py-3 px-5 rounded-lg mb-3" style="color: white" *ngFor="let program of waitApts;let i=index">
     <span>{{getStudentStringFromId(program.ogrenciId)}}</span>
-    <span>Başlangıç: {{toDateString(program.randevuStart)}}</span>
-    <span>Bitiş: {{toDateString(program.randevuEnd)}}</span>
+    <span>Start Date: {{toDateString(program.randevuStart)}}</span>
+    <span>End Date: {{toDateString(program.randevuEnd)}}</span>
     <div class="d-flex justify-content-between mt-4">
-      <button style="width: 45%" class="btn btn-success" (click)="approveClick(program.programId, i)">Onayla</button>
-      <button style="width: 45%" class="btn btn-danger" (click)="deleteClick(program.programId, i)">Sil</button>
+      <button style="width: 45%" class="btn btn-success" (click)="approveClick(program.programId, i)">Approve</button>
+      <button style="width: 45%" class="btn btn-danger" (click)="deleteClick(program.programId, i)">Reject</button>
     </div>
   </div>
 </div>
 
 <div class="mt-5 d-flex flex-column align-items-center" *ngIf="approvedApts?.length > 0">
-  <span class="mb-3">Onaylanan Istekler</span>
+  <span class="mb-3">Approved Requests</span>
   <div class="bg-success d-flex flex-column py-3 px-5 rounded-lg mb-3" style="color: white" *ngFor="let program of approvedApts">
     <span>{{getStudentStringFromId(program.ogrenciId)}}</span>
-    <span>Başlangıç: {{toDateString(program.randevuStart)}}</span>
-    <span>Bitiş: {{toDateString(program.randevuEnd)}}</span>
+    <span>Start Date: {{toDateString(program.randevuStart)}}</span>
+    <span>End Date: {{toDateString(program.randevuEnd)}}</span>
   </div>
 </div>

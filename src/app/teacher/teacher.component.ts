@@ -45,7 +45,7 @@ export class TeacherComponent implements OnInit {
 
   getStudentStringFromId(id) {
     let student = this.students.find(elem => elem.ogrenciId === id);
-    return 'Öğrenci Adı Soyadı: ' + student.adi + ' ' + student.soyadi;
+    return 'Student\'s Full Name: ' + student.adi + ' ' + student.soyadi;
   }
 
   approveClick(id, index) {
